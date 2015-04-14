@@ -1,0 +1,24 @@
+! ----------------------------------------------------------------------------
+! Hex Literal Example
+!
+! This grammar shows how to define Hex Literals in your grammar. 
+! The formats used for C++ and Visual Basic are included
+!
+! Please visit www.devincook.com/goldparser for additional grammars.
+! ----------------------------------------------------------------------------
+
+"Name"         = 'Hex Literal Example'
+"Author"       = 'Devin Cook'
+"About"        = 'This is the very simple grammar that shows how to define hex literals'
+
+! You don't need both [abcdef] sets for case-insensitive grammars.
+{Hex Char}     = {Digit} + [abcdef] + [ABCDEF]     
+
+CHexLiteral    = '0x'{Hex Char}+
+VBHexLiteral   = '&H'{Hex Char}+ [&]?
+
+! ----------------------------------------------------------------------------
+"Start Symbol" = <Hex> 
+
+<Hex> ::= CHexLiteral
+        | VBHexLiteral
