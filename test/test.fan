@@ -106,6 +106,19 @@ class prog : Test
 		verifyEq(parse("0x5432".in, g).name, "Hex")
 	}
 
+	public Void testId()
+	{
+		gr := GrammerReader(Pod.of(this).file(`/res/test-grammers/grammar-example-identifiers.egt`).in)
+		g := gr.getGrammer
+		PrintData(g)
+		
+		s := "h123".in
+		verifyEq(checkS(s,g).name, "Identifier") 
+		verifyNull(s.peekChar)
+
+		verifyEq(parse("j3424".in, g).name, "Value")
+	}
+
 	public Void PrintData(Grammer g)
 	{
 		l.debug("*************************")
